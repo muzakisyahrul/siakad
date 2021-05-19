@@ -6,6 +6,14 @@ session_start();
 if (isset($_SESSION['user'])) {
     header('Location: ' . BASE_URL . 'admin/dashboard.php');
 }
+
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == "no_session") {
+        $error = true;
+        $error_message = "Silakan Login Terlebih Dahulu";
+    }
+}
+
 $input = $_POST;
 if (isset($input['submit'])) {
 

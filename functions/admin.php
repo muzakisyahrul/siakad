@@ -6,5 +6,5 @@ session_start();
 // print_r($_SESSION['user']);
 // exit;
 if (!isset($_SESSION['user'])) {
-    header('Location: ' . BASE_URL . 'login.php');
+    header('Location: ' . BASE_URL . 'login.php?status=no_session');
 }

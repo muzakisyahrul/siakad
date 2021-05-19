@@ -45,6 +45,20 @@
  <script>
      const BASE_URL = "<?= BASE_URL ?>";
      $(function() {
+         var a = $("#sidebar_nav li a");
+         $.each(a, function(i, val) {
+             if (val.className == "nav-link active") {
+                 var parent = val.parentElement.parentElement.parentElement;
+                 var previus = val.parentElement.parentElement.previousElementSibling;
+                 if (parent != undefined) {
+                     parent.className = "nav-item menu-open";
+                 }
+                 if (previus != undefined) {
+                     previus.className = "nav-link active";
+                 }
+             }
+         });
+
          //Initialize Select2 Elements
          $('.select2').select2()
 
@@ -173,8 +187,48 @@
          })
      }
 
+     toastr.options = {
+         "closeButton": true,
+         "debug": false,
+         "newestOnTop": false,
+         "progressBar": false,
+         "positionClass": "toast-bottom-right",
+         "preventDuplicates": false,
+         "onclick": null,
+         "showDuration": "300",
+         "hideDuration": "1000",
+         "timeOut": "5000",
+         "extendedTimeOut": "1000",
+         "showEasing": "swing",
+         "hideEasing": "linear",
+         "showMethod": "fadeIn",
+         "hideMethod": "fadeOut"
+     }
+
+     function showToast(type, message) {
+         switch (type) {
+             case "success":
+                 toastr["success"](message, "<span style='font-size:20px'><b>Berhasil!</b></span>");
+                 break;
+             case "error":
+                 toastr["error"](message, "<span style='font-size:20px'><b>Gagal!</b></span>");
+                 break;
+         }
+     }
+
+
      // BS-Stepper Init
  </script>
+ <?php if (isset($success)) { ?>
+     <script type="text/javascript">
+         showToast("success", "<?= $success_message ?>");
+     </script>
+ <?php } ?>
+ <?php if (isset($error)) { ?>
+     <script type="text/javascript">
+         showToast("error", "<?= $error_message ?>");
+     </script>
+ <?php } ?>
 
  </body>
 

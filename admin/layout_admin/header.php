@@ -1,5 +1,6 @@
 <?php
 require_once "../functions/base.php";
+require_once "../functions/query.php";
 require_once "../functions/admin.php";
 
 ?>
@@ -9,7 +10,7 @@ require_once "../functions/admin.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIAKAD | Dashboard</title>
+    <title>SIAKAD</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,12 +39,21 @@ require_once "../functions/admin.php";
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/plugins/toastr/toastr.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 
     <!-- jQuery -->
     <script src="<?= BASE_URL ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= BASE_URL ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="<?= BASE_URL ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= BASE_URL ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= BASE_URL ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= BASE_URL ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -114,7 +124,7 @@ require_once "../functions/admin.php";
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= BASE_URL ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?= BASE_URL ?>files/foto_pegawai/<?= $_SESSION['user']['foto'] ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"><?= $_SESSION['user']['nama_lengkap'] ?></a>
@@ -124,19 +134,16 @@ require_once "../functions/admin.php";
 
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                <nav class="mt-2" id="sidebar_nav">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="" class="nav-link" id="nav-dashboard">
+                            <a href="<?= BASE_URL . 'admin/dashboard.php' ?>" class="nav-link" id="nav-dashboard">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-
-
-
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -148,7 +155,7 @@ require_once "../functions/admin.php";
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="" class="nav-link" id="nav-mahasiswa">
+                                    <a href="<?= BASE_URL . 'admin/data_mhs.php' ?>" class="nav-link" id="nav-mahasiswa">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>
                                             Data Mahasiswa
