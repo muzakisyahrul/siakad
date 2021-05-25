@@ -6,15 +6,8 @@ function select_all($query)
     global  $koneksi;
     $result = mysqli_query($koneksi, $query);
     $data = array();
-    if ($result) {
-        $kolom = mysqli_fetch_fields($result);
-        while ($d = mysqli_fetch_array($result)) {
-            $arr = [];
-            foreach ($kolom as $v) {
-                $arr[$v->name] =  $d[$v->name];
-            }
-            $data[] = $arr;
-        }
+    while ($d = mysqli_fetch_assoc($result)) {
+        $data[] = $d;
     }
     return $data;
 }
@@ -34,5 +27,20 @@ function insert_data($query)
 {
     global  $koneksi;
     $result = mysqli_query($koneksi, $query);
-    return $result;
+    if (mysqli_affected_rows($koneksi) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function delete_data($query)
+{
+    global  $koneksi;
+    $result = mysqli_query($koneksi, $query);
+    if (mysqli_affected_rows($koneksi) > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }

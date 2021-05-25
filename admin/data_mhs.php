@@ -1,5 +1,10 @@
 <?php require("layout_admin/header.php") ?>
 <?php
+if (isset($_GET['act'])) {
+    if ($_GET['act'] == 'hapus') {
+        $flashdata = hapus_mahasiswa($_GET['id']);
+    }
+}
 $mhs = select_all("SELECT m.*,p.nama_prodi FROM mahasiswa m 
                     LEFT JOIN prodi p USING(kode_prodi) 
                     ORDER BY m.nim ASC");
@@ -66,9 +71,9 @@ $mhs = select_all("SELECT m.*,p.nama_prodi FROM mahasiswa m
                                                 <button type="button" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-danger">
+                                                <a href="?act=hapus&id=<?= $v['id'] ?>" onclick="return deletechecked()" type="button" class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i> Delete
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>

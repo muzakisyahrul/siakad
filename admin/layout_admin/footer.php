@@ -216,17 +216,21 @@
          }
      }
 
+     function deletechecked() {
+         if (confirm("Apakah anda yakin menghapus data ini?")) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+
 
      // BS-Stepper Init
  </script>
- <?php if (isset($success)) { ?>
+ <?php if (isset($flashdata)) { ?>
      <script type="text/javascript">
-         showToast("success", "<?= $success_message ?>");
-     </script>
- <?php } ?>
- <?php if (isset($error)) { ?>
-     <script type="text/javascript">
-         showToast("error", "<?= $error_message ?>");
+         showToast('<?= $flashdata['type'] ?>', "<?= $flashdata['message'] ?>");
+         window.history.pushState({}, 'Title', window.location.href.split("?")[0]);
      </script>
  <?php } ?>
 

@@ -1,18 +1,7 @@
 <?php require("layout_admin/header.php") ?>
 <?php
-$input = $_POST;
-if (isset($input['submit_tambah'])) {
-    $nim = $input['nim'];
-    $nama = $input['nama'];
-    $prodi = $input['prodi'];
-    $no_telepon = str_replace("-", "", $input['no_telepon']);
-    $email = $input['email'];
-    $alamat = $input['alamat'];
-    $q_insert = "INSERT INTO mahasiswa(nim,nama,kode_prodi,no_telepon,email,alamat) 
-                VALUES('$nim','$nama','$prodi','$no_telepon','$email','$alamat')";
-    $insert = insert_data($q_insert);
-    $success = true;
-    $success_message = "Tambah Data Berhasil";
+if (isset($_POST['submit_tambah'])) {
+    $flashdata = tambah_mahasiswa($_POST);
 }
 $prodi = select_all("SELECT p.* from prodi p ORDER BY p.kode_prodi ASC");
 ?>
