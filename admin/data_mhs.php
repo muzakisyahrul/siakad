@@ -68,9 +68,9 @@ $mhs = select_all("SELECT m.*,p.nama_prodi FROM mahasiswa m
                                             <td><span class="badge bg-warning"><?= $v['nama_prodi'] ?></span></td>
                                             <td><?= $v['no_telepon'] ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-primary">
+                                                <a href="<?= BASE_URL . 'admin/edit_mhs.php?id=' . $v['id'] ?>" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
-                                                </button>
+                                                </a>
                                                 <a href="?act=hapus&id=<?= $v['id'] ?>" onclick="return deletechecked()" type="button" class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </a>

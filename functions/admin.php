@@ -47,3 +47,30 @@ function hapus_mahasiswa($id)
     }
     return $response;
 }
+
+function edit_mahasiswa($id, $data_detail, $input)
+{
+    $nim = $input['nim'];
+    $nama = htmlspecialchars($input['nama']);
+    $prodi = $input['prodi'];
+    $no_telepon = str_replace("-", "", $input['no_telepon']);
+    $email = htmlspecialchars($input['email']);
+    $alamat = htmlspecialchars($input['alamat']);
+    $cek_nim['JUM'] = 0;
+    if ($data_detail['nim'] != $nim) {
+        $cek_nim = select_one("SELECT COUNT(nim) as JUM FROM mahasiswa WHERE nim=$nim");
+    }
+    if ($cek_nim['JUM'] > 0) {
+        $response = ['type' => "error", 'message' => "NIM Sudah Ada Yang Memakai"];
+    } else {
+        $q_update = "UPDATE mahasiswa SET nim = '$nim',nama='$nama',kode_prodi='$prodi',
+        no_telepon = '$no_telepon',email='$email',alamat='$alamat' WHERE id='$id'";
+        $update = update_data($q_update);
+        if ($update) {
+            $response = ['type' => "success", 'message' => "Edit Data Berhasil"];
+        } else {
+            $response = ['type' => "error", 'message' => "Edit Data Gagal"];
+        }
+    }
+    return $response;
+}

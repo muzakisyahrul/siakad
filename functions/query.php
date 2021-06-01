@@ -34,6 +34,13 @@ function insert_data($query)
     }
 }
 
+function update_data($query)
+{
+    global  $koneksi;
+    $result = mysqli_query($koneksi, $query);
+    return true;
+}
+
 function delete_data($query)
 {
     global  $koneksi;
