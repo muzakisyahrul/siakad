@@ -2,7 +2,7 @@
 <?php
 if (isset($_GET['act'])) {
     if ($_GET['act'] == 'hapus') {
-        $flashdata = hapus_dosen($_GET['id']);
+        $flashdata = hapus_matkul($_GET['id']);
     }
 }
 $dosen = select_all("SELECT d.* FROM matkul d

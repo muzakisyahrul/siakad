@@ -143,6 +143,18 @@ function hapus_dosen($id)
     return $response;
 }
 
+function hapus_matkul($id)
+{
+    $q_delete = "DELETE FROM matkul WHERE id=$id";
+    $deleted = delete_data($q_delete);
+    if ($deleted) {
+        $response = ['type' => "success", 'message' => "Hapus Data Berhasil"];
+    } else {
+        $response = ['type' => "error", 'message' => "Hapus Data Gagal"];
+    }
+    return $response;
+}
+
 function edit_mahasiswa($id, $data_detail, $input)
 {
     $nim = $input['nim'];
