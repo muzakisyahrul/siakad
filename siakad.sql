@@ -11,11 +11,32 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 25/05/2021 20:43:22
+ Date: 05/07/2021 20:50:28
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for dosen
+-- ----------------------------
+DROP TABLE IF EXISTS `dosen`;
+CREATE TABLE `dosen`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nama_dosen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `gelar_depan` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `gelar_belakang` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `no_telepon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `alamat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `nip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dosen
+-- ----------------------------
+INSERT INTO `dosen` VALUES (3, 'Wahyu Cahyono ', '', 'S.kom', 'wahyu@gmail.com', '087678567567', 'a', '8487384738473847');
 
 -- ----------------------------
 -- Table structure for jabatan
@@ -48,7 +69,7 @@ CREATE TABLE `mahasiswa`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `kode_prodi_mhs`(`kode_prodi`) USING BTREE,
   CONSTRAINT `kode_prodi_mhs` FOREIGN KEY (`kode_prodi`) REFERENCES `prodi` (`kode_prodi`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of mahasiswa
@@ -58,6 +79,22 @@ INSERT INTO `mahasiswa` VALUES (2, '20510001', 'Irfan Hakim', 51, '', '089678567
 INSERT INTO `mahasiswa` VALUES (3, '20510019', 'Beni Wahyudi', 51, 'beniwahyu@stimata.ac.id', '087667556889', 'Jln Raya Teluk Pacitan No 13');
 INSERT INTO `mahasiswa` VALUES (4, '20520001', 'Firmandika Setiawan', 52, '', '089678678999', '');
 INSERT INTO `mahasiswa` VALUES (5, '20520018', 'Muzaki Syahrul Karomah', 52, 'muzaki@stimata.ac.id', '089678181688', 'Jln Perum Asrikaton Indah No 3');
+
+-- ----------------------------
+-- Table structure for matkul
+-- ----------------------------
+DROP TABLE IF EXISTS `matkul`;
+CREATE TABLE `matkul`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of matkul
+-- ----------------------------
+INSERT INTO `matkul` VALUES (1, 'Sistem Basis Data');
+INSERT INTO `matkul` VALUES (2, 'p web');
 
 -- ----------------------------
 -- Table structure for pegawai

@@ -230,7 +230,11 @@
  <?php if (isset($flashdata)) { ?>
      <script type="text/javascript">
          showToast('<?= $flashdata['type'] ?>', "<?= $flashdata['message'] ?>");
-         window.history.pushState({}, 'Title', window.location.href.split("?")[0]);
+         <?php if ($flashdata['message'] == "Hapus Data Berhasil") { ?>
+             window.history.pushState({}, 'Title', window.location.href.split("?")[0]);
+         <?php } else { ?>
+
+         <?php } ?>
      </script>
  <?php } ?>
 

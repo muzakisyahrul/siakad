@@ -163,7 +163,7 @@ require_once "../functions/admin.php";
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link" id="nav-dosen">
+                                    <a href="<?= BASE_URL . 'admin/data_dosen.php' ?>" class="nav-link" id="nav-dosen">
                                         <i class="nav-icon fas fa-user"></i>
                                         <p>
                                             Data Dosen
@@ -171,7 +171,7 @@ require_once "../functions/admin.php";
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link" id="nav-matkul">
+                                    <a href="<?= BASE_URL . 'admin/data_matkul.php' ?>" class="nav-link" id="nav-matkul">
                                         <i class="nav-icon fas fa-book"></i>
                                         <p>
                                             Data Mata Kuliah
@@ -181,7 +181,7 @@ require_once "../functions/admin.php";
                             </ul>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-money-bill-alt"></i>
                                 <p>
@@ -215,7 +215,7 @@ require_once "../functions/admin.php";
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
 
                         <!-- <li class="nav-item">
