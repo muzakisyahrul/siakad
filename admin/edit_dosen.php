@@ -4,7 +4,9 @@ $id_dosen = $_GET['id'];
 $data_dosen = select_one("SELECT * from dosen WHERE id=$id_dosen");
 if (isset($_POST['submit_edit'])) {
     $flashdata = edit_dosen($id_dosen, $data_dosen, $_POST);
+    $data_dosen = select_one("SELECT * from dosen WHERE id=$id_dosen");
 }
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->

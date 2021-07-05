@@ -1,10 +1,12 @@
 <?php require("layout_admin/header.php") ?>
 <?php
 $id_matkul = $_GET['id'];
-$data_matkul = select_one("SELECT * from matkul WHERE id=$id_matkul");
 if (isset($_POST['submit_edit'])) {
     $flashdata = edit_matkul($id_matkul, $_POST);
+    $data_matkul = select_one("SELECT * from matkul WHERE id=$id_matkul");
 }
+
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->

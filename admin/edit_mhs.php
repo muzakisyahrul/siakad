@@ -2,10 +2,13 @@
 <?php
 $id_mhs = $_GET['id'];
 $data_mhs = select_one("SELECT * from mahasiswa WHERE id=$id_mhs");
-$prodi = select_all("SELECT p.* from prodi p ORDER BY p.kode_prodi ASC");
 if (isset($_POST['submit_edit'])) {
     $flashdata = edit_mahasiswa($id_mhs, $data_mhs, $_POST);
+    $data_mhs = select_one("SELECT * from mahasiswa WHERE id=$id_mhs");
 }
+
+$prodi = select_all("SELECT p.* from prodi p ORDER BY p.kode_prodi ASC");
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
